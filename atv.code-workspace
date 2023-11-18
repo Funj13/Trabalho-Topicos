@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "C:/wamp64/www/atv"
+		},
+		{
+			"path": "C:/wamp64/www/projeto-Death-Impact"
+		},
+		{
+			"path": "C:/Users/caique/Desktop/proj-pereira"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../trabalho do reidner"
+		},
+		{
+			"path": "../codigos"
+		},
+		{
+			"path": "../Json"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Trabalho-Topicos"
+	}
+}

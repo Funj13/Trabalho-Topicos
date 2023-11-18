@@ -1,0 +1,117 @@
+:root {
+  --black: #000000;
+  --white: #fff;
+  --green: #008000;
+  --grey: #4f4e4e;
+  --light-green: #04AA6D;
+  --blue: #0f8cfa;
+  --darkred: #903;
+}
+
+body {
+  background-size: 100%;
+  background-color: black;
+  height: 100%;
+  margin: 0;
+  overflow: hidden; 
+}
+
+label {
+  color: rgb(255, 255, 255);
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Buttom*/
+#btn {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: rgb(223, 223, 223);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+}
+
+#btn:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: rgb(223, 223, 223);
+  transform: translateY(-7px);
+}
+
+#btn:active {
+  transform: translateY(-1px);
+}
+
+  .card {
+    background-color: var(--grey);
+    padding: 80px;
+    border-radius: 16px;
+    width: 350px;
+  }  
+  .card-content label {
+    color:rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card-content-area input {
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    margin-top: 5px;
+    padding:0 2px;
+    background-color: transparent;
+    outline: none;
+}
+
+.card-content-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.error {
+  font-family: monospace;
+  font-size: 12px;
+  color: rgb(202, 0, 0);
+  font-weight: bold;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  font-family: monospace;
+  margin: 10;
+}
+
+.Modal-Adicionar {
+  display: none;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+}
+
+.input-adic{
+  color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  appearance: none;
+}
+
