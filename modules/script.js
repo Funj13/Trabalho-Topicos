@@ -1,4 +1,6 @@
 
+var listCtts = [];
+
 
 function SaveCtt(){
   var nome = document.getElementById("nome").value;
@@ -17,31 +19,39 @@ function SaveCtt(){
     "endereo": ender
   }
 
-  var ContatoString = JSON.stringify(contato);
+  var ContatoString = JSON.stringify(listCtts);
   console.log("JSN:" + ContatoString);
-  return ContatoString;
+
+  listCtts.push(contato);
+
+  document.getElementById("nome").value = "";
+  document.getElementById("telefone_fixo").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("apelido").value = "";
+  document.getElementById("celular").value = "";
+  document.getElementById("endereco").value = "";
+
 }
 
-function exportForm(ContatoString){
+function exportForm(){
+  var ContatoString = JSON.stringify(listCtts);
   downloadArquivoJSON(ContatoString, '../contatos.json');
+  listCtts = [];
 }
 
-function downloadArquivoJSON(conteudo, nomeArquivo) {
-  var blob = new Blob([conteudo], { type: 'application/json' });
+function downloadArquivoJSON(content, nameArq) {
+  var blob = new Blob([content], { type: 'application/json' });
   var url = window.URL.createObjectURL(blob);
 
   var a = document.createElement('a');
   a.href = url;
-  a.download = nomeArquivo;
+  a.download = nameArq;
 
-  // Adicionar o link ao corpo do documento e clicar nele
   document.body.appendChild(a);
   a.click();
 
-  // Remover o link do corpo do documento
   document.body.removeChild(a);
 
-  // Limpar a URL do objeto Blob
   window.URL.revokeObjectURL(url);
 }
 
