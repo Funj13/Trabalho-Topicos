@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/top-nav.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="top_nav.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos</title>
@@ -37,11 +37,11 @@
 
                 <div class="card-content-area">  
                   <label>Nome:</label>
-                  <input type="text" id="nome" class="input-adic" name="nome"> <br>
+                  <input type="text" id="nome" class="input-adic" name="nome" pattern="^[a-zA-Z][1,]"> <br>
                 </div>
                 <div class="card-content-area">  
                   <label>Telefone Fixo:</label>
-                  <input type="number" id="telefone_fixo" class="input-adic" name="tel-fixo"> <br>
+                  <input type="number" id="telefone_fixo" class="input-adic" name="tel-fixo" pattern="^[0-9][1,]"> <br>
                 </div>
 
                 <div class="card-content-area">  
@@ -51,12 +51,12 @@
                 
                 <div class="card-content-area">  
                   <label>Apelido:</label>
-                  <input type="text" id="apelido" class="input-adic"> <br>
+                  <input type="text" id="apelido" class="input-adic" pattern="^[a-zA-Z][1,]"> <br>
                 </div>
 
                 <div class="card-content-area">  
                   <label>Telefone Celular:</label>
-                  <input type="number" id="celular" class="input-adic"> <br>
+                  <input type="number" id="celular" class="input-adic" pattern="^[0-9][1,]"> <br>
                 </div>
 
                 <div class="card-content-area">  
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button id="btn" onclick="SaveCtt()" type="button">Enviar</button>
+                  <button id="btn" onclick="validar_contato()" type="button">Enviar</button>
                 </div><br>
                 <div><button id="btn" class="fecharModal"  type="button">Fechar</button></div>
                 
@@ -181,8 +181,8 @@
         </div>
       </div>
 
-      <script src="../modules/script.js"></script>
-      <script src="../modules/modal.js"></script>
+      <script src="script.js"></script>
+      <script src="modal.js"></script>
     </main>
 
     <footer>
