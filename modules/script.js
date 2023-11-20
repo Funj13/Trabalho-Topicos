@@ -1,6 +1,56 @@
 
 var listCtts = [];
 
+function validar_contato(){
+  
+  var nome = document.getElementById("nome");
+  var tel_fixo = document.getElementById("telefone_fixo");
+  var email = document.getElementById("email");
+  var apelido = document.getElementById("apelido");
+  var tel_cell = document.getElementById("celular");
+  var ender = document.getElementById("endereco");
+  //verificar se os campos estao vazios
+  if(nome.value === '' || email.value === '' || tel_fixo.value === '' || apelido.value === '' || tel_cell.value === '' || ender.value === ''){
+      alert("PREENCHA OS CAMPOS VAZIOS .");
+      event.preventDefault();
+      return false;
+  }
+  var nomeRegex = /^[A-Za-z]+$/
+  if (!nomeRegex.test(nome.value)){
+      alert("nome Invalido!");
+      nome.focus();
+      event.preventDefault();
+      return false;
+  }
+  var numeroRegex = /^[0-9]+$/
+  if (!numeroRegex.test(tel_cell.value)){
+    alert("numero de telefone celular Invalido!");
+    tel_cell.focus();
+    event.preventDefault();
+    return false;
+}
+if (!numeroRegex.test(tel_fixo.value)){
+    alert("numero de telefone fixo Invalido!");
+    tel_fixo.focus();
+    event.preventDefault();
+    return false;
+}
+  if (!nomeRegex.test(nome.value)){
+      alert("nome Invalido!");
+      nome.focus();
+      event.preventDefault();
+      return false;
+  }
+  let emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(email.value)){
+      alert("Email Invalido!");
+      email.focus();
+      event.preventDefault();
+      return false;
+  }
+  SaveCtt();
+}
+
 function SaveCtt(){
   var nome = document.getElementById("nome").value;
   var tel_fixo = document.getElementById("telefone_fixo").value;
@@ -93,4 +143,3 @@ function downloadArquivoJSON(content, nameArq) {
   document.body.removeChild(a);
   window.URL.revokeObjectURL(url);
 }
-
