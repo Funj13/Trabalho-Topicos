@@ -1,8 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   OpenModal('OpenModalAdic', 'openModal-Adicionar');
-  OpenModal('OpenModalEditar', 'openModal-Editar');
-  OpenModal('OpenModalExcluir', 'openModal-Excluir');
 });
 
 function OpenModal(Openbtn, OpenModal){

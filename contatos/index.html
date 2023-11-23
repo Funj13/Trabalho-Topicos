@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="top_nav.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/top-nav.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos</title>
@@ -13,8 +13,8 @@
     <div id="top-nav">
       <div class="topnav" style="height: 50px; width: 100%;">
         <a  class="active" id="OpenModalAdic" href="#" >Adicionar</a>
-        <a  class="active" id="OpenModalExcluir" href="#" >Excluir</a>
-        <a  class="active" id="OpenModalEditar" href="#" >Editar</a>
+        <!-- <a  class="active" id="OpenModalExcluir" href="#" >Excluir</a>
+        <a  class="active" id="OpenModalEditar" href="#" >Editar</a> -->
 
         <div class="topnav-right">
           <a class="active" onclick="exportForm()">Exportar</a>
@@ -77,112 +77,24 @@
         </div>
       </div>
 
-      <!--Modal Editar-->
-      <div id="openModal-Editar" class="Modal-Editar">
-        <div class="modal-content">
+      <h2>Dados Salvos</h2>
+    <table id="tabela">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tel_Fixo</th>
+                <th>Email</th>
+                <th>Apelido</th>
+                <th>Tel_Cell</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-          <div id="form">
-            <form action="submit" class="card">
-
-              <div class="card-content">
-
-                <div class="card-content-area">  
-                  <label>Nome:</label>
-                  <input type="text" id="nome" class="input-adic" name="nome"> <br>
-                </div>
-                <div class="card-content-area">  
-                  <label>Telefone Fixo:</label>
-                  <input type="number" id="telefone_fixo" class="input-adic" name="tel-fixo"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Email:</label>
-                  <input type="email" id="email" class="input-adic" name="email"> <br>
-                </div>
-                
-                <div class="card-content-area">  
-                  <label>Apelido:</label>
-                  <input type="text" id="apelido" class="input-adic"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Telefone Celular:</label>
-                  <input type="number" id="celular" class="input-adic"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Endereço:</label>
-                  <input type="text" id="endereco" class="input-adic"> <br>
-                </div>
-
-                <div class="card-footer">
-                  <button id="btn" onclick="Editar(0)" type="button">Editar</button>
-                </div>
-                <br>
-                <div><button id="btn" class="fecharModal"  type="button">Fechar</button></div>
-              </div>
-
-              <input type="hidden" id="editarIndice" value="">
-            </form>
-          </div>
-         
-          
-        </div>
-      </div>
-      <!-- Modal excluir -->
-      <div id="openModal-Excluir" class="Modal-Excluir">
-        <div class="modal-content">
-
-          <div id="form">
-            <form action="submit" class="card">
-
-              <div class="card-content">
-
-                <div class="card-content-area">  
-                  <label>Nome:</label>
-                  <input type="text" id="nome" class="input-adic" name="nome"> <br>
-                </div>
-                <div class="card-content-area">  
-                  <label>Telefone Fixo:</label>
-                  <input type="number" id="telefone_fixo" class="input-adic" name="tel-fixo"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Email:</label>
-                  <input type="email" id="email" class="input-adic" name="email"> <br>
-                </div>
-                
-                <div class="card-content-area">  
-                  <label>Apelido:</label>
-                  <input type="text" id="apelido" class="input-adic"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Telefone Celular:</label>
-                  <input type="number" id="celular" class="input-adic"> <br>
-                </div>
-
-                <div class="card-content-area">  
-                  <label>Endereço:</label>
-                  <input type="text" id="endereco" class="input-adic"> <br>
-                </div>
-
-                <div class="card-footer">
-                  <button id="btn" onclick="DeletCtt()" type="button">Deletar</button>
-                </div>
-                <br>
-                <div><button id="btn" class="fecharModal"  type="button">Fechar</button></div>
-              </div>
-
-            </form>
-          </div>
-
-
-        </div>
-      </div>
-
-      <script src="script.js"></script>
-      <script src="modal.js"></script>
+      <script src="../modules/modal.js"></script>
+      <script src="../modules/script.js"></script>
     </main>
 
     <footer>

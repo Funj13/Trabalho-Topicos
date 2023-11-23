@@ -1,6 +1,12 @@
 
 var listCtts = [];
+const table = document.getElementById('tabela');
 
+function json(){
+  // ContatoString.textContent = JSON.stringify(listCtts, null, 2);
+  
+}
+// Validação do Formulario
 function validar_contato(){
   
   var nome = document.getElementById("nome");
@@ -15,13 +21,6 @@ function validar_contato(){
       event.preventDefault();
       return false;
   }
-  // var nomeRegex = /^[A-Za-z]+$/
-  // // if (!nomeRegex.test(nome.value)){
-  // //     alert("nome Invalido!");
-  // //     nome.focus();
-  // //     event.preventDefault();
-  // //     return false;
-  // // }
   var numeroRegex = /^[0-9]+$/
   if (!numeroRegex.test(tel_cell.value)){
     alert("numero de telefone celular Invalido!");
@@ -43,8 +42,9 @@ if (!numeroRegex.test(tel_fixo.value)){
       return false;
   }
   SaveCtt();
+  insertDados(nome, tel_fixo, email, apelido, tel_cell, ender);
 }
-
+// Salvar Contatos no Objeto
 function SaveCtt(){
   var nome = document.getElementById("nome").value;
   var tel_fixo = document.getElementById("telefone_fixo").value;
@@ -61,63 +61,76 @@ function SaveCtt(){
     "tel_cell": tel_cell,
     "endereo": ender
   }
-
+  listCtts.push(contato);
+  document.getElementById("nome").value = "";
+  document.getElementById("telefone_fixo").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("apelido").value = "";
+  document.getElementById("celular").value = "";
+  document.getElementById("endereco").value = "";
+// Lista JSON
   var ContatoString = JSON.stringify(listCtts);
   console.log("JSN:" + ContatoString);
-
-  listCtts.push(contato);
-
-  document.getElementById("nome").value = "";
-  document.getElementById("telefone_fixo").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("apelido").value = "";
-  document.getElementById("celular").value = "";
-  document.getElementById("endereco").value = "";
 }
+// Inserir Dados a Página HTMl
+function insertDados(nome, tel_fixo, email, apelido, tel_cell, ender) {
+  var linha = table.insertRow();
+  var colunaNome = linha.insertCell();
+  var colunaTel_fixo = linha.insertCell();
+  var colunaEmail = linha.insertCell();
+  var colunaApel = linha.insertCell();
+  var colunaCell = linha.insertCell();
+  var colunaEnder = linha.insertCell();
+  var colunaButtons = linha.insertCell();
 
-function Editar(edit){
-  var contato = listCtts[edit];
+  colunaNome.textContent = nome;
+  colunaTel_fixo.textContent = tel_fixo;
+  colunaEmail.textContent = email;
+  colunaApel.textContent = apelido;
+  colunaCell.textContent = tel_cell;
+  colunaEnder.textContent = ender;
 
-    // Preencher o formulário com os dados do contato selecionado
-    document.getElementById("nome").value = contato.nome;
-    document.getElementById("telefone_fixo").value = contato.tel_fixo;
-    document.getElementById("email").value = contato.email;
-    document.getElementById("apelido").value = contato.apelido;
-    document.getElementById("celular").value = contato.tel_cell;
-    document.getElementById("endereco").value = contato.endereco;
+  var buttonEdit = document.createElement('button');
+  buttonEdit.textContent = 'Editar';
+  buttonEdit.addEventListener('click', () => EditarCtt(linha));
 
-    // Armazenar o índice do contato que está sendo editado (pode ser útil para salvar as alterações)
-    document.getElementById("editarIndice").value = edit;
+  var buttonDelt = document.createElement('button');
+  buttonDelt.textContent = 'Excluir';
+  buttonDelt.addEventListener('click', () => Delt(linha));
+
+  colunaButtons.appendChild(buttonEdit);
+  colunaButtons.appendChild(buttonDelt);
 }
-
-function EditCtt() {
-  var edit = document.getElementById("editarIndice").value;
-
-  // Atualizar os dados do contato no array
-  listCtts[edit] = {
-      nome: document.getElementById("nome").value,
-      tel_fixo: document.getElementById("telefone_fixo").value,
-      email: document.getElementById("email").value,
-      apelido: document.getElementById("apelido").value,
-      tel_cell: document.getElementById("celular").value,
-      endereco: document.getElementById("endereco").value
-  };
-
-  // Limpar o formulário
-  document.getElementById("nome").value = "";
-  document.getElementById("telefone_fixo").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("apelido").value = "";
-  document.getElementById("celular").value = "";
-  document.getElementById("endereco").value = "";
-
+function EditarCtt(linha){
+  listCtts[index];
+  var index = linha.rowIndex - 1;
+  var nome = prompt('Digite o novo Nome:', listCtts[index].nome);
+  var tel_fixo = prompt('Digite o novo Telefone Fixo:', listCtts[index].tel_fixo);
+  var email = prompt('Digite o novo Email:', listCtts[index].email);
+  var apelido = prompt('Digite o novo Apelido:', listCtts[index].apelido);
+  var tel_cell = prompt('Digite o novo Telefone Celular:', listCtts[index].tel_cell);
+  var ender = prompt('Digite o novo Endereço:', listCtts[index].ender);
+  listCtts[index] = { nome, tel_fixo, email, apelido, tel_cell, ender };
+  attLinhaHtml(linha, nome, tel_fixo, email, apelido, tel_cell, ender);
+  // json();
+  var ContatoString = JSON.stringify(listCtts);
+  console.log("JSN:" + ContatoString);
 }
-
-
-function Delt(){
-  deletElement = listCtts = [];
-  deletElement.remove();
-
+// 
+function attLinhaHtml(linha, nome, tel_fixo, email, apelido, tel_cell, ender) {
+  linha.cells[0].textContent = nome;
+  linha.cells[1].textContent = tel_fixo;
+  linha.cells[2].textContent = email;
+  linha.cells[3].textContent = apelido;
+  linha.cells[4].textContent = tel_cell;
+  linha.cells[5].textContent = ender;
+}
+// Função para Deletar elemento pelo botão
+function Delt(linha){
+  let index = linha.rowIndex - 1;
+  listCtts.splice(index, 1);
+  tabela.deleteRow(linha.rowIndex);
+  //json();
 }
 
 function exportForm(){
