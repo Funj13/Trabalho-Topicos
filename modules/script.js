@@ -15,13 +15,13 @@ function validar_contato(){
       event.preventDefault();
       return false;
   }
-  var nomeRegex = /^[A-Za-z]+$/
-  if (!nomeRegex.test(nome.value)){
-      alert("nome Invalido!");
-      nome.focus();
-      event.preventDefault();
-      return false;
-  }
+  // var nomeRegex = /^[A-Za-z]+$/
+  // // if (!nomeRegex.test(nome.value)){
+  // //     alert("nome Invalido!");
+  // //     nome.focus();
+  // //     event.preventDefault();
+  // //     return false;
+  // // }
   var numeroRegex = /^[0-9]+$/
   if (!numeroRegex.test(tel_cell.value)){
     alert("numero de telefone celular Invalido!");
@@ -35,12 +35,6 @@ if (!numeroRegex.test(tel_fixo.value)){
     event.preventDefault();
     return false;
 }
-  if (!nomeRegex.test(nome.value)){
-      alert("nome Invalido!");
-      nome.focus();
-      event.preventDefault();
-      return false;
-  }
   let emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email.value)){
       alert("Email Invalido!");
@@ -121,6 +115,8 @@ function EditCtt() {
 
 
 function Delt(){
+  deletElement = listCtts = [];
+  deletElement.remove();
 
 }
 
