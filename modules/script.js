@@ -2,13 +2,8 @@
 var listCtts = [];
 const table = document.getElementById('tabela');
 
-function json(){
-  // ContatoString.textContent = JSON.stringify(listCtts, null, 2);
-  
-}
 // Validação do Formulario
 function validar_contato(){
-  
   var nome = document.getElementById("nome");
   var tel_fixo = document.getElementById("telefone_fixo");
   var email = document.getElementById("email");
@@ -41,8 +36,8 @@ if (!numeroRegex.test(tel_fixo.value)){
       event.preventDefault();
       return false;
   }
+  // Envia para função de Salvar os Ctt
   SaveCtt();
-  insertDados(nome, tel_fixo, email, apelido, tel_cell, ender);
 }
 // Salvar Contatos no Objeto
 function SaveCtt(){
@@ -52,7 +47,7 @@ function SaveCtt(){
   var apelido = document.getElementById("apelido").value;
   var tel_cell = document.getElementById("celular").value;
   var ender = document.getElementById("endereco").value;
-
+  
   var contato ={
     "nome":nome,
     "tel_fixo":tel_fixo,
@@ -68,9 +63,13 @@ function SaveCtt(){
   document.getElementById("apelido").value = "";
   document.getElementById("celular").value = "";
   document.getElementById("endereco").value = "";
+
 // Lista JSON
   var ContatoString = JSON.stringify(listCtts);
   console.log("JSN:" + ContatoString);
+
+// Abre função de inserção da tabela HTML
+  insertDados(nome, tel_fixo, email, apelido, tel_cell, ender);
 }
 // Inserir Dados a Página HTMl
 function insertDados(nome, tel_fixo, email, apelido, tel_cell, ender) {
@@ -116,7 +115,7 @@ function EditarCtt(linha){
   var ContatoString = JSON.stringify(listCtts);
   console.log("JSN:" + ContatoString);
 }
-// 
+// Função para atualizar a tabela HTML
 function attLinhaHtml(linha, nome, tel_fixo, email, apelido, tel_cell, ender) {
   linha.cells[0].textContent = nome;
   linha.cells[1].textContent = tel_fixo;
@@ -132,21 +131,19 @@ function Delt(linha){
   tabela.deleteRow(linha.rowIndex);
   //json();
 }
-
+//  Exportar Contatos para Download
 function exportForm(){
   var ContatoString = JSON.stringify(listCtts);
   downloadArquivoJSON(ContatoString, '../contatos.json');
   listCtts = [];
 }
-
+// Fazer download do Arquivo em JSON
 function downloadArquivoJSON(content, nameArq) {
   var blob = new Blob([content], { type: 'application/json' });
   var url = window.URL.createObjectURL(blob);
-
   var a = document.createElement('a');
   a.href = url;
   a.download = nameArq;
-
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
